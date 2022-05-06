@@ -1,6 +1,6 @@
 # shuaalapp
 
-SeniorProject
+SeniorProject..
 
 ## Getting Started
 
