@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "715626879485",
+    "project_id": "shuaal-30757",
+    "storage_bucket": "shuaal-30757.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:715626879485:android:9eafe18231a5014d08a194",
+        "android_client_info": {
+          "package_name": "com.example.shuaalapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "715626879485-85fe4jsrhk1iis303mta1hffeip0mo3k.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.shuaalapp",
+            "certificate_hash": "a0ef7cd41d4834c184776989657fef1e77604951"
+          }
+        },
+        {
+          "client_id": "715626879485-lof1olk0bc79tld4b1646i1skvigr0a5.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCNRIUgpPhBf0P6BCBEhctyXnjpfgdKWNs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "715626879485-lof1olk0bc79tld4b1646i1skvigr0a5.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
