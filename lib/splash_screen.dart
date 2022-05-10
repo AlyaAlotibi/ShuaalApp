@@ -38,6 +38,8 @@ class StartState extends State<SplashScreen> {
   }
 
   Widget initWidget(BuildContext context) {
+    Size size = MediaQuery.of(context).size;
+    // This size provide us total height and width of our screen
     return Scaffold(
       body: Stack(
         children: [
