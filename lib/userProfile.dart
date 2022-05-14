@@ -19,24 +19,50 @@ class userProfile  extends StatelessWidget {
   decoration: BoxDecoration(gradient: LinearGradient(
   begin: Alignment.topRight,
   end: Alignment.bottomLeft,
-  colors: [ Colors.white70,
-  Colors.redAccent,
+  colors: [ Color( 0xC0654D),
+  Color(0xDCE3CF),
 
 
   ],
   )
   ),
   child: Column(children:<Widget>[
-    SizedBox(height:50.0,),
-    Column(children:<Widget> [TextField(
-      controller: Name,
-      decoration: InputDecoration(labelText:'name',
-      prefixIcon:Icon(Icons.person),
-      border: myInputBorder(),
-      enabledBorder:  myInputBorder(),
-      focusedBorder: myFoucsBorder(),)
+    SizedBox(height:80.0,),
+    Container(
+      padding:EdgeInsets.only(top: 80.0,left: 20.0,right: 20.0),
+      child: Column(children:<Widget> [
+      SizedBox(height: 20.0, ),
+        TextField(
+            controller: Name,
+            decoration: InputDecoration(
+              labelText:'first name',
+              prefixIcon:Icon(Icons.person),
+              border: myInputBorder(),
+              enabledBorder:  myInputBorder(),
+              focusedBorder: myFoucsBorder(),)
+        ),
+        SizedBox(height: 20.0, ),
+        TextField(
+            controller: Major,
+            decoration: InputDecoration(labelText:'Major',
+              prefixIcon:Icon(Icons.school),
+              border: myInputBorder(),
+              enabledBorder:  myInputBorder(),
+              focusedBorder: myFoucsBorder(),)
 
-    )],)],))
+        ),
+        SizedBox(height: 20.0, ),
+        TextField(
+            controller: about,
+            decoration: InputDecoration(labelText:'about',
+              prefixIcon:Icon(Icons.article),
+              border: myInputBorder(),
+              enabledBorder:  myInputBorder(),
+              focusedBorder: myFoucsBorder(),)
+
+        ),
+        SizedBox(height: 20.0, ),],),
+    )],))
         ,Align(
       alignment: Alignment.topCenter,
         child: Stack(
