@@ -4,17 +4,14 @@ import 'package:shuaalapp/profile/appbar_widget.dart';
 import 'package:shuaalapp/profile/user_file.dart';
 import 'package:shuaalapp/profile/user_pref.dart';
 
+import 'ProfileWidget.dart';
+class UserProfileWidget extends StatefulWidget {
+  //const HomePageWidget({required Key key}) : super(key: key);
 
-
-
-import 'ProfileWidget.dart';class UserProfileWidget extends StatefulWidget {
   @override
-  _UserProfileState creatState () => _UserProfileState();
-  @override
-  State<StatefulWidget> createState() {
-
-  }
+  _UserProfileState createState() => _UserProfileState();
 }
+
 class _UserProfileState extends State<UserProfileWidget> {
   @override
   Widget build(BuildContext context) {
