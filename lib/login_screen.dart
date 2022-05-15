@@ -3,10 +3,11 @@ import 'dart:io';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
-import 'package:shuaalapp/profile/user_profile.dart';
+//import 'package:shuaalapp/profile/user_profile.dart';
 import 'package:shuaalapp/signup_screen.dart';
 //import 'package:login_ui_design/signup_screen.dart';
 import 'package:shuaalapp/home_screen.dart';
+import 'package:shuaalapp/userProfile.dart';
 class LoginScreen extends StatefulWidget {
   @override
   State<StatefulWidget> createState() => StartState();
@@ -149,9 +150,7 @@ final _formKey=GlobalKey<FormState>();
                               }
                               return null;
                             },
-                            onChanged:  (String value) {
-                              passwordController.text= value;
-                            },
+
                             onSaved: (value){
                               passwordController.text=value!;
                             },
@@ -261,7 +260,7 @@ final _formKey=GlobalKey<FormState>();
     if(_formKey.currentState!.validate()){
       await _auth.signInWithEmailAndPassword(email: email, password: password).then((value) => {
         Fluttertoast.showToast(msg: "Login Successful"),
-        Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context)=>UserProfileWidget()))
+        Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context)=>HomePageWidget()))
       }).catchError((e){
         Fluttertoast.showToast(msg: e!.message);
       });
