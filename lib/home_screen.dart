@@ -20,6 +20,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
         child: GestureDetector(
           onTap: () => FocusScope.of(context).unfocus(),
           child: Column(
+
             mainAxisSize: MainAxisSize.max,
             children: [
               Padding(
@@ -31,10 +32,10 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                       width: 100,
                       height: 100,
                       decoration: BoxDecoration(
-                        color: Color(0xFFEEEEEE),
+                        //color: Color(0xFFEEEEEE),
                       ),
                       child: Image.asset(
-                        'images/app_logo.png',
+                        'images/app_logo-removebg-preview.png',
                         width: 100,
                         height: 100,
                         fit: BoxFit.cover,
@@ -44,7 +45,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                       child: Align(
                         alignment: AlignmentDirectional(1, 0),
                         child: Image.asset(
-                          'images/logo.png',
+                          'images/appname-removebg-preview.png',
                           width: 100,
                           height: 100,
                           fit: BoxFit.cover,
@@ -83,9 +84,11 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                   ],
                 ),
               ),
+
             ],
           ),
         ),
+
       ),
     );
   }
