@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:shuaalapp/model/user_model.dart';
 
@@ -52,8 +53,8 @@ class _userProfileState extends State<userProfile>{
                   begin: Alignment.topRight,
                   end: Alignment.bottomLeft,
                   colors: [
-                    Color(0xC0654D),
-                    Color(0xDCE3CF),
+                    Colors.white70,
+                    Color(0xFFFF8952),
                   ],
                 )),
             child: Column(
@@ -67,6 +68,16 @@ class _userProfileState extends State<userProfile>{
                     children: <Widget>[
                       SizedBox(
                         height: 20.0,
+                      ),
+
+                      Text(
+                          "${loggedInUser.email}",
+                          //textAlign: TextAlign.justify,
+                          style: TextStyle(
+                              fontSize: 20,
+                              fontWeight: FontWeight.w300,
+                              color: Colors.grey
+                          ),
                       ),
                       TextField(
                           controller: Name,
@@ -115,7 +126,7 @@ class _userProfileState extends State<userProfile>{
             children: <Widget>[
               ClipOval(
                   child: Image.asset(
-                    'images/profile.jpg',
+                    'images/logo.png',
                     width: 150,
                     height: 150,
                     fit: BoxFit.cover,
