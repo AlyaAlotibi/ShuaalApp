@@ -78,35 +78,43 @@ else{
                   height: 80.0,
                 ),
                 Container(
-                  padding: EdgeInsets.only(top: 80.0, left: 20.0, right: 20.0),
+                  //padding: EdgeInsets.only( ),
+                  margin: EdgeInsets.only(right: 250),
                   child: Column(
                     children: <Widget>[
-                      SizedBox(
-                        height: 20.0,
-                      ),
+
 
                       Text(
-                          "${loggedInUser.email}",
+                          "First Name:\n ${loggedInUser.name}",
                           //textAlign: TextAlign.justify,
                           style: TextStyle(
                               fontSize: 20,
                               fontWeight: FontWeight.w300,
-                              color: Colors.grey
+                              color: Colors.black,
                           ),
                       ),
-                      TextField(
-                          controller: Name,
-                          decoration: InputDecoration(
-                            labelText: 'first name',
-                            prefixIcon: Icon(Icons.person),
-                            border: myInputBorder(),
-                            enabledBorder: myInputBorder(),
-                            focusedBorder: myFoucsBorder(),
-                          )),
+                      //TextField(
+                      //    controller: Name,
+                       //   decoration: InputDecoration(
+                      //      labelText: 'first name',
+                      //      prefixIcon: Icon(Icons.person),
+                      //      border: myInputBorder(),
+                      //      enabledBorder: myInputBorder(),
+                      //      focusedBorder: myFoucsBorder(),
+                      //    )),
                       SizedBox(
                         height: 20.0,
                       ),
-                      TextField(
+                      Text(
+                        "Major:\n ",
+                        //textAlign: TextAlign.justify,
+                        style: TextStyle(
+                          fontSize: 20,
+                          fontWeight: FontWeight.w300,
+                          color: Colors.black,
+                        ),
+                      ),
+                     /* TextField(
                           controller: Major,
                           decoration: InputDecoration(
                             labelText: 'Major',
@@ -114,11 +122,20 @@ else{
                             border: myInputBorder(),
                             enabledBorder: myInputBorder(),
                             focusedBorder: myFoucsBorder(),
-                          )),
+                          )),*/
                       SizedBox(
                         height: 20.0,
                       ),
-                      TextField(
+                      Text(
+                        "Bio\n ",
+                        //textAlign: TextAlign.justify,
+                        style: TextStyle(
+                          fontSize: 20,
+                          fontWeight: FontWeight.w300,
+                          color: Colors.black,
+                        ),
+                      ),
+                      /*TextField(
                           controller: about,
                           decoration: InputDecoration(
                             labelText: 'about',
@@ -126,9 +143,41 @@ else{
                             border: myInputBorder(),
                             enabledBorder: myInputBorder(),
                             focusedBorder: myFoucsBorder(),
-                          )),
+                          )),*/
                       SizedBox(
                         height: 20.0,
+                      ),
+                      Text(
+                        "Clubs enrolled\n "
+                            ,
+                        //textAlign: TextAlign.justify,
+                        style: TextStyle(
+                          fontSize: 20,
+                          fontWeight: FontWeight.w300,
+                          color: Colors.black,
+                        ),
+                      ),
+                      Text(
+                        "${loggedInUser.club}\n "
+                        ,
+                        //textAlign: TextAlign.justify,
+                        style: TextStyle(
+                          fontSize: 20,
+                          fontWeight: FontWeight.w300,
+                          color: Colors.black,
+                        ),
+                      ),
+                      SizedBox(
+                        height: 20.0,
+                      ),
+                      Text(
+                        "Badges",
+                        textAlign: TextAlign.justify,
+                        style: TextStyle(
+                          fontSize: 20,
+                          fontWeight: FontWeight.w300,
+                          color: Colors.black,
+                        ),
                       ),
                     ],
                   ),
