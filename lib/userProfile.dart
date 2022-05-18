@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:shuaalapp/DatabaseManager/databaseManager.dart';
 import 'package:shuaalapp/model/user_model.dart';
 
 
@@ -16,9 +17,11 @@ class userProfile  extends StatefulWidget {
 class _userProfileState extends State<userProfile>{
   User? user =FirebaseAuth.instance.currentUser;
   UserModel loggedInUser =UserModel();
+  List userList=[];
   @override
   void initState(){
   super.initState();
+fetchDataList();
   FirebaseFirestore.instance.collection("users").doc(user!.uid).get()
       .then((value){
         this.loggedInUser=UserModel.fromMap(value.data());
@@ -26,6 +29,18 @@ class _userProfileState extends State<userProfile>{
 
         });
   });
+  }
+  fetchDataList() async{
+dynamic result=await databaseManager().getUserList();
+if(result==null){
+  print("unable");
+}
+else{
+  setState(() {
+    userList=result;
+  });
+
+}
   }
   @override
   Widget build(BuildContext context) {

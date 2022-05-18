@@ -20,6 +20,11 @@ class InitState extends State<SignUpScreen> {
   final TextEditingController phoneController=new TextEditingController();
   final TextEditingController passwordController=new TextEditingController();
   final TextEditingController confirmPasswordController=new TextEditingController();
+  String name='';
+  String email='';
+  String password='';
+  String Conpassword='';
+  String phone='';
   Widget initWidget() {
     return Scaffold(
         body: SingleChildScrollView(
@@ -31,8 +36,7 @@ class InitState extends State<SignUpScreen> {
                       end: Alignment.bottomCenter
                   )
               ),
-              child: Form(
-                key: _formKey,
+
                 child: Column(
 
                   children: [
@@ -93,48 +97,57 @@ class InitState extends State<SignUpScreen> {
                       ),
 
 
-                    Container(
+                    Form(
+                        key: _formKey,
+                      child: Container(
 
-                      alignment: Alignment.center,
-                      margin: EdgeInsets.only(left: 20, right: 20, top: 70),
-                      padding: EdgeInsets.only(left: 20, right: 20),
-                      height: 54,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(50),
-                        color: Colors.grey[200],
-                        boxShadow: [
-                          BoxShadow(
-                              offset: Offset(0, 10),
-                              blurRadius: 50,
-                              color: Color(0xffEEEEEE)
+                        alignment: Alignment.center,
+                        margin: EdgeInsets.only(left: 20, right: 20, top: 70),
+                        padding: EdgeInsets.only(left: 20, right: 20),
+                        height: 54,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(50),
+                          color: Colors.grey[200],
+                          boxShadow: [
+                            BoxShadow(
+                                offset: Offset(0, 10),
+                                blurRadius: 50,
+                                color: Color(0xffEEEEEE)
+                            ),
+                          ],
+                        ),
+                        child: TextFormField(
+                          controller: nameController,
+                          keyboardType: TextInputType.name,
+                          onChanged: (val){
+                            setState(() {
+                              name=val;
+                            });
+                          },
+                          validator:(value){
+                            RegExp regex=new RegExp(r'^.{3,}$');
+                            if(value!.isEmpty)
+                            {
+                              return ("Please inter your name");
+                            }
+                            if(!regex.hasMatch(value)){
+                              return ("Please inter name more than 3 character");
+                            }
+                            return null;
+                          },
+                          //onSaved: (value){
+                         // nameController.text=value!;
+                      //  },
+                          cursorColor: Color(0xffF5591F),
+                          decoration: InputDecoration(
+                            icon: Icon(
+                              Icons.person,
+                              color: Color(0xffF5591F),
+                            ),
+                            hintText: "Full Name",
+                            enabledBorder: InputBorder.none,
+                            focusedBorder: InputBorder.none,
                           ),
-                        ],
-                      ),
-                      child: TextFormField(
-                        controller: nameController,
-                        keyboardType: TextInputType.name,
-                        validator:(value){
-                          RegExp regex=new RegExp(r'^.{3,}$');
-                          if(value!.isEmpty)
-                          {
-                            return ("Please inter your name");
-                          }
-                          if(!regex.hasMatch(value)){
-                            return ("Please inter name more than 3 character");
-                          }
-                          return null;
-                        },onSaved: (value){
-                        nameController.text=value!;
-                      },
-                        cursorColor: Color(0xffF5591F),
-                        decoration: InputDecoration(
-                          icon: Icon(
-                            Icons.person,
-                            color: Color(0xffF5591F),
-                          ),
-                          hintText: "Full Name",
-                          enabledBorder: InputBorder.none,
-                          focusedBorder: InputBorder.none,
                         ),
                       ),
                     ),
@@ -156,6 +169,11 @@ class InitState extends State<SignUpScreen> {
                         ],
                       ),
                       child: TextFormField(
+                        onChanged: (val){
+                          setState(() {
+                            email=val;
+                          });
+                        },
                         controller: emailController,
                         keyboardType: TextInputType.emailAddress,
                         validator:(value){
@@ -168,9 +186,9 @@ class InitState extends State<SignUpScreen> {
                           }
                           return null;
                         },
-                        onSaved: (value){
-                          emailController.text=value!;
-                        },
+                        //onSaved: (value){
+                        //  emailController.text=value!;
+                        //},
                         cursorColor: Color(0xffF5591F),
                         decoration: InputDecoration(
                           icon: Icon(
@@ -201,6 +219,11 @@ class InitState extends State<SignUpScreen> {
                         ],
                       ),
                       child: TextFormField(
+                        onChanged: (val){
+                          setState(() {
+                            phone=val;
+                          });
+                        },
                         controller: phoneController,
                         keyboardType: TextInputType.phone,
                         validator: (value){
@@ -240,6 +263,11 @@ class InitState extends State<SignUpScreen> {
                         ],
                       ),
                       child: TextFormField(
+                        onChanged: (val){
+                          setState(() {
+                            password=val;
+                          });
+                        },
                         controller: passwordController,
                         obscureText: true,
                         validator:(value){
@@ -253,9 +281,9 @@ class InitState extends State<SignUpScreen> {
                           }
                           return null;
                         },
-                        onSaved: (value){
-                          passwordController.text=value!;
-                        },
+                        //onSaved: (value){
+                        //  passwordController.text=value!;
+                       // },
                         cursorColor: Color(0xffF5591F),
                         decoration: InputDecoration(
                           focusColor: Color(0xffF5591F),
@@ -285,6 +313,11 @@ class InitState extends State<SignUpScreen> {
                         ],
                       ),
                       child: TextFormField(
+                        onChanged: (val){
+                          setState(() {
+                            Conpassword=val;
+                          });
+                        },
                         controller: confirmPasswordController,
                         obscureText: true,
                         validator: (value){
@@ -297,9 +330,9 @@ class InitState extends State<SignUpScreen> {
                           }
                           return null;
                         },
-                        onSaved: (value){
-                          confirmPasswordController.text=value!;
-                        },
+                        //onSaved: (value){
+                        // Conpassword=value!;
+                       // },
                         cursorColor: Color(0xffF5591F),
                         decoration: InputDecoration(
                           focusColor: Color(0xffF5591F),
@@ -346,23 +379,30 @@ class InitState extends State<SignUpScreen> {
                             ),
                           ),
                         ),
-                        onPressed: (){
-                          if (_formKey.currentState!.validate()) {
+                        onPressed: () async{
+
+                        // try{
+                         //  final user=await _auth.createUserWithEmailAndPassword(email: emailController.text, password: passwordController.text);
+                         //  }catch(e){
+                         //  print(e);
+                          //  }
+                           if (_formKey.currentState!.validate()) {
                             // If the form is valid, display a snackbar. In the real world,
                             // you'd often call a server or save the information in a database.
                             //print(passwordController.text);
-                            signUp(emailController.text, passwordController.text);
-                          }
 
-                        },
+                            signUp(email, password);
+                          }}
+
+    ),
                       ),
-                    ),
+
 
                   ],
                 ),
               ),
             )
-        )
+
     );
   }
   postDetailsToFirestore() async{
@@ -371,8 +411,8 @@ class InitState extends State<SignUpScreen> {
     UserModel userModel=UserModel();
     userModel.email=user!.email;
     userModel.uid=user.uid;
-    userModel.name=nameController.text;
-    userModel.phone=phoneController.text as int?;
+    userModel.name=name;
+    userModel.phone=phone;
     await firebaseFirestore.collection("users").doc(user.uid).set(userModel.toMap());
     Fluttertoast.showToast(msg: "Account created successfully");
 
@@ -380,13 +420,20 @@ class InitState extends State<SignUpScreen> {
 
 
   }
-  void signUp(String email,String password) async {
+  //User _userFromFirebaseUser (User user){
+  //  return user != null ? User(uid: user.uid) : null;
+ // }
+  Future signUp(String email,String password) async {
     if(_formKey.currentState!.validate()){
       await _auth.createUserWithEmailAndPassword(email: email, password: password).then((value) => {
-      postDetailsToFirestore()
+        postDetailsToFirestore()
       }).catchError((e){
         Fluttertoast.showToast(msg: e!.message);
-        });
+      });
+      //UserCredential result= await _auth.createUserWithEmailAndPassword(email: email, password: password);
+      //User? user  =result.user;
+      //return _userFromFirebaseUser(user);
+
     }
 
   }

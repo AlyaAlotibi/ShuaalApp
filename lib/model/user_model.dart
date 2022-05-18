@@ -3,7 +3,7 @@ class UserModel {
   String? name;
   String? email;
   String? password;
-  int? phone;
+  String? phone;
   UserModel({this.uid,this.name,this.email,this.password,this.phone});
   factory UserModel.fromMap(map){
     return UserModel(
@@ -22,4 +22,5 @@ class UserModel {
       'phone':phone,
       };
 }
+
 }
