@@ -171,7 +171,7 @@ else{
                         height: 20.0,
                       ),
                       Text(
-                        "Badges\n",
+                        "Badges",
                         textAlign: TextAlign.justify,
                         style: TextStyle(
                           fontSize: 20,
