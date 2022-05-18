@@ -171,8 +171,8 @@ else{
                         height: 20.0,
                       ),
                       Text(
-                        "Badges\n ",
-                        //textAlign: TextAlign.justify,
+                        "Badges\n",
+                        textAlign: TextAlign.justify,
                         style: TextStyle(
                           fontSize: 20,
                           fontWeight: FontWeight.w300,
