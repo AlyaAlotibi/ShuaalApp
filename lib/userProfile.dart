@@ -1,6 +1,9 @@
+import 'dart:io';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:shuaalapp/model/user_model.dart';
 
 
@@ -8,11 +11,18 @@ class userProfile  extends StatefulWidget {
   const userProfile({Key? key}) : super(key: key);
 
   @override
-  State<StatefulWidget> createState() =>_userProfileState();
+  State<StatefulWidget> createState() =>_userProfileState( );
 
   }
 
 class _userProfileState extends State<userProfile>{
+  File?image;
+  Future pickImage() async{
+    final image=await ImagePicker().pickImage(source: ImageSource.gallery);
+    if (image==null) return;
+    final imageTemporary=File(image.path);
+     setState(() =>this.image=imageTemporary);
+  }
   User? user =FirebaseAuth.instance.currentUser;
   UserModel loggedInUser =UserModel();
   @override
@@ -32,17 +42,20 @@ class _userProfileState extends State<userProfile>{
     TextEditingController Major=  TextEditingController();
     TextEditingController about=  TextEditingController();
     return Scaffold(
+
       appBar: AppBar(
+        backgroundColor: Colors.transparent,
         title: Text('Profile'),
         centerTitle: true,
         leading: IconButton(
           icon: Icon(Icons.arrow_back),
-          onPressed: () {},
+          onPressed: () {Navigator.pop(context,true);},
         ),
         actions: [IconButton(icon: Icon(Icons.edit), onPressed: () {})],
-        backgroundColor: Colors.transparent,
+
       ),
-      body: Stack(children: <Widget>[
+      body:
+      Stack(children: <Widget>[
         Container(
             margin: EdgeInsets.only(top: 80.0),
             width: MediaQuery.of(context).size.width,
@@ -52,8 +65,8 @@ class _userProfileState extends State<userProfile>{
                   begin: Alignment.topRight,
                   end: Alignment.bottomLeft,
                   colors: [
-                    Color(0xC0654D),
-                    Color(0xDCE3CF),
+                    Colors.white70,
+                    Color(0xFFFF8952),
                   ],
                 )),
             child: Column(
@@ -101,6 +114,7 @@ class _userProfileState extends State<userProfile>{
                             enabledBorder: myInputBorder(),
                             focusedBorder: myFoucsBorder(),
                           )),
+
                       SizedBox(
                         height: 20.0,
                       ),
@@ -108,12 +122,16 @@ class _userProfileState extends State<userProfile>{
                   ),
                 )
               ],
-            )),
+            )
+        ),
+
         Align(
           alignment: Alignment.topCenter,
           child: Stack(
             children: <Widget>[
               ClipOval(
+
+
                   child: Image.asset(
                     'images/profile.jpg',
                     width: 150,
@@ -126,18 +144,28 @@ class _userProfileState extends State<userProfile>{
                 child: Container(
                     padding: EdgeInsets.all(5.0),
                     decoration: BoxDecoration(
-                        color: Colors.grey, shape: BoxShape.circle),
-                    child: Icon(
-                      Icons.add_a_photo_outlined,
-                      size: 30.0,
-                    )),
+                        color: Colors.white, shape: BoxShape.circle),
+                    child:  Container(
+                      child: IconButton(
+                         icon: Icon(
+                        Icons.add_a_photo_outlined,
+                        size: 30.0,
+
+                      ), onPressed: () {  },
+                      ),
+                    ),
               )
-            ],
+
+              )],
           ),
         ),
-      ]),
+      ])
+      ,
+
     );
+
   }
+
 
   OutlineInputBorder myInputBorder() {
     return OutlineInputBorder(
