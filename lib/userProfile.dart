@@ -16,13 +16,10 @@ class userProfile  extends StatefulWidget {
   }
 
 class _userProfileState extends State<userProfile>{
-  File?image;
-  Future pickImage() async{
-    final image=await ImagePicker().pickImage(source: ImageSource.gallery);
-    if (image==null) return;
-    final imageTemporary=File(image.path);
-     setState(() =>this.image=imageTemporary);
-  }
+  late File _pickedImage;
+
+
+
   User? user =FirebaseAuth.instance.currentUser;
   UserModel loggedInUser =UserModel();
   @override
@@ -41,6 +38,7 @@ class _userProfileState extends State<userProfile>{
     TextEditingController Name=  TextEditingController();
     TextEditingController Major=  TextEditingController();
     TextEditingController about=  TextEditingController();
+
     return Scaffold(
 
       appBar: AppBar(
@@ -127,42 +125,87 @@ class _userProfileState extends State<userProfile>{
 
         Align(
           alignment: Alignment.topCenter,
-          child: Stack(
-            children: <Widget>[
-              ClipOval(
+          child: Stack(children: [ Container(
+            margin: EdgeInsets.symmetric(vertical: 30,horizontal:30 ),
+            child: CircleAvatar(radius: 71,backgroundColor: Colors.grey,
+            child: CircleAvatar(
+              radius: 65,
+              backgroundImage:  _pickedImage==null?null:FileImage( _pickedImage) ,
+            ),)
+            ,
+          ),Positioned(
+            top: 120,
+              left: 110,
+
+              child:RawMaterialButton(
+                elevation: 10,
+                child: Icon(Icons.add),
+                padding: EdgeInsets.all(15.0),
+                shape: CircleBorder(),
 
 
-                  child: Image.asset(
-                    'images/profile.jpg',
-                    width: 150,
-                    height: 150,
-                    fit: BoxFit.cover,
-                  )),
-              Positioned(
-                bottom: 5,
-                right: 15.5,
-                child: Container(
-                    padding: EdgeInsets.all(5.0),
-                    decoration: BoxDecoration(
-                        color: Colors.white, shape: BoxShape.circle),
-                    child:  Container(
-                      child: IconButton(
-                         icon: Icon(
-                        Icons.add_a_photo_outlined,
-                        size: 30.0,
 
-                      ), onPressed: () {  },
-                      ),
-                    ),
-              )
+                onPressed: () {showDialog(context: context, builder:(BuildContext context){
+    return AlertDialog(
+    title: Text("Choose option",style: TextStyle(fontWeight: FontWeight.w600),
+    ),
+    content: SingleChildScrollView(
+    child: ListBody(children: [
+    InkWell(
+    onTap:(){} ,
+    splashColor: Colors.black,
+    child:Row(children: [
+    Padding(
+    padding: const EdgeInsets.all(8.0),
+    child: Icon(Icons.camera_alt_outlined,color: Colors.black,),
+    ),Text("Camera",style:TextStyle(fontSize: 18,fontWeight: FontWeight.w500) ,)
+    ],
+    ) ,
+    ),InkWell(
+    onTap:(){} ,
+    splashColor: Colors.black,
+    child:Row(children: [
+    Padding(
+    padding: const EdgeInsets.all(8.0),
+    child: Icon(Icons.image,color: Colors.black,),
+    ),Text("Gallery",style:TextStyle(fontSize: 18,fontWeight: FontWeight.w500) ,)
+    ],
+    ) ,
+    ),InkWell(
+    onTap:(){} ,
+    splashColor: Colors.black,
+    child:Row(children: [
+    Padding(
+    padding: const EdgeInsets.all(8.0),
+    child: Icon(Icons.highlight_remove_outlined,color: Colors.black,),
+    ),Text("Remove",style:TextStyle(fontSize: 18,fontWeight: FontWeight.w500) ,)
+    ],
+    ) ,
+    )
 
-              )],
-          ),
-        ),
-      ])
-      ,
+    ],),
+    ),
 
     );
+    });
+
+                }
+                )
+                  ),
+    ]),
+    ),
+                ])
+
+    );
+
+  }
+
+
+
+                     //onPressed: () {  },
+
+
+
 
   }
 
@@ -178,4 +221,3 @@ class _userProfileState extends State<userProfile>{
         borderRadius: BorderRadius.all(Radius.circular(20)),
         borderSide: BorderSide(color: Color(0xFFFFFF), width: 3));
   }
-}

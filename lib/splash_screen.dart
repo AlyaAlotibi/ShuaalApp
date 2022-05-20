@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:shuaalapp/signup_screen.dart';
+import 'package:shuaalapp/userProfile.dart';
 
 void main() {
   runApp(SplashScreen());
@@ -28,7 +29,7 @@ class StartState extends State<SplashScreen> {
 
   route() {
     Navigator.pushReplacement(context, MaterialPageRoute(
-        builder: (context) => SignUpScreen()
+        builder: (context) => userProfile()
     ));
   }
 
