@@ -8,6 +8,7 @@ import 'package:shuaalapp/signup_screen.dart';
 //import 'package:login_ui_design/signup_screen.dart';
 import 'package:shuaalapp/home_screen.dart';
 import 'package:shuaalapp/userProfile.dart';
+import 'package:shuaalapp/clubs.dart';
 class LoginScreen extends StatefulWidget {
   @override
   State<StatefulWidget> createState() => StartState();
@@ -260,7 +261,7 @@ final _formKey=GlobalKey<FormState>();
     if(_formKey.currentState!.validate()){
       await _auth.signInWithEmailAndPassword(email: email, password: password).then((value) => {
         Fluttertoast.showToast(msg: "Login Successful"),
-        Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context)=>userProfile()))
+        Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context)=>ClubScreen()))
       }).catchError((e){
         Fluttertoast.showToast(msg: e!.message);
       });

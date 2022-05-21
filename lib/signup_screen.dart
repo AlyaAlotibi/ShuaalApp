@@ -25,6 +25,7 @@ class InitState extends State<SignUpScreen> {
   String password='';
   String Conpassword='';
   String phone='';
+
   Widget initWidget() {
     return Scaffold(
         body: SingleChildScrollView(
@@ -99,269 +100,14 @@ class InitState extends State<SignUpScreen> {
 
                     Form(
                         key: _formKey,
-                      child: Container(
+                      child: Column(children: [
+                        Container(
 
-                        alignment: Alignment.center,
-                        margin: EdgeInsets.only(left: 20, right: 20, top: 70),
-                        padding: EdgeInsets.only(left: 20, right: 20),
-                        height: 54,
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(50),
-                          color: Colors.grey[200],
-                          boxShadow: [
-                            BoxShadow(
-                                offset: Offset(0, 10),
-                                blurRadius: 50,
-                                color: Color(0xffEEEEEE)
-                            ),
-                          ],
-                        ),
-                        child: TextFormField(
-                          controller: nameController,
-                          keyboardType: TextInputType.name,
-                          onChanged: (val){
-                            setState(() {
-                              name=val;
-                            });
-                          },
-                          validator:(value){
-                            RegExp regex=new RegExp(r'^.{3,}$');
-                            if(value!.isEmpty)
-                            {
-                              return ("Please inter your name");
-                            }
-                            if(!regex.hasMatch(value)){
-                              return ("Please inter name more than 3 character");
-                            }
-                            return null;
-                          },
-                          //onSaved: (value){
-                         // nameController.text=value!;
-                      //  },
-                          cursorColor: Color(0xffF5591F),
-                          decoration: InputDecoration(
-                            icon: Icon(
-                              Icons.person,
-                              color: Color(0xffF5591F),
-                            ),
-                            hintText: "Full Name",
-                            enabledBorder: InputBorder.none,
-                            focusedBorder: InputBorder.none,
-                          ),
-                        ),
-                      ),
-                    ),
-
-                    Container(
-                      alignment: Alignment.center,
-                      margin: EdgeInsets.only(left: 20, right: 20, top: 20),
-                      padding: EdgeInsets.only(left: 20, right: 20),
-                      height: 54,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(50),
-                        color: Colors.grey[200],
-                        boxShadow: [
-                          BoxShadow(
-                              offset: Offset(0, 10),
-                              blurRadius: 50,
-                              color: Color(0xffEEEEEE)
-                          ),
-                        ],
-                      ),
-                      child: TextFormField(
-                        onChanged: (val){
-                          setState(() {
-                            email=val;
-                          });
-                        },
-                        controller: emailController,
-                        keyboardType: TextInputType.emailAddress,
-                        validator:(value){
-                          if(value!.isEmpty)
-                          {
-                            return ("Please inter your Email");
-                          }
-                          if(!RegExp(r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+").hasMatch(value)){
-                            return ("Please inter valid Email");
-                          }
-                          return null;
-                        },
-                        //onSaved: (value){
-                        //  emailController.text=value!;
-                        //},
-                        cursorColor: Color(0xffF5591F),
-                        decoration: InputDecoration(
-                          icon: Icon(
-                            Icons.email,
-                            color: Color(0xffF5591F),
-                          ),
-                          hintText: "Email",
-                          enabledBorder: InputBorder.none,
-                          focusedBorder: InputBorder.none,
-                        ),
-                      ),
-                    ),
-
-                    Container(
-                      alignment: Alignment.center,
-                      margin: EdgeInsets.only(left: 20, right: 20, top: 20),
-                      padding: EdgeInsets.only(left: 20, right: 20),
-                      height: 54,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(50),
-                        color: Color(0xffEEEEEE),
-                        boxShadow: [
-                          BoxShadow(
-                              offset: Offset(0, 20),
-                              blurRadius: 100,
-                              color: Color(0xffEEEEEE)
-                          ),
-                        ],
-                      ),
-                      child: TextFormField(
-                        onChanged: (val){
-                          setState(() {
-                            phone=val;
-                          });
-                        },
-                        controller: phoneController,
-                        keyboardType: TextInputType.phone,
-                        validator: (value){
-                          if(value!.isEmpty)
-                          {
-                            return ("Please inter your phone");
-                          }
-
-                        },
-                        cursorColor: Color(0xffF5591F),
-                        decoration: InputDecoration(
-                          focusColor: Color(0xffF5591F),
-                          icon: Icon(
-                            Icons.phone,
-                            color: Color(0xffF5591F),
-                          ),
-                          hintText: "Phone Number",
-                          enabledBorder: InputBorder.none,
-                          focusedBorder: InputBorder.none,
-                        ),
-                      ),
-                    ),
-                    Container(
-                      alignment: Alignment.center,
-                      margin: EdgeInsets.only(left: 20, right: 20, top: 20),
-                      padding: EdgeInsets.only(left: 20, right: 20),
-                      height: 54,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(50),
-                        color: Color(0xffEEEEEE),
-                        boxShadow: [
-                          BoxShadow(
-                              offset: Offset(0, 20),
-                              blurRadius: 100,
-                              color: Color(0xffEEEEEE)
-                          ),
-                        ],
-                      ),
-                      child: TextFormField(
-                        onChanged: (val){
-                          setState(() {
-                            password=val;
-                          });
-                        },
-                        controller: passwordController,
-                        obscureText: true,
-                        validator:(value){
-                          RegExp regex=new RegExp(r'^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[!@#\$&*~]).{8,}$');
-                          if(value!.isEmpty)
-                          {
-                            return ("Please inter your Password");
-                          }
-                          if(!regex.hasMatch(value)){
-                            return ("Please inter valid Password at least one \n (upper case,lower case,digit,Special character)\n and at least 8 characters in length");
-                          }
-                          return null;
-                        },
-                        //onSaved: (value){
-                        //  passwordController.text=value!;
-                       // },
-                        cursorColor: Color(0xffF5591F),
-                        decoration: InputDecoration(
-                          focusColor: Color(0xffF5591F),
-                          icon: Icon(
-                            Icons.vpn_key,
-                            color: Color(0xffF5591F),
-                          ),
-                          hintText: "Enter Password",
-                          enabledBorder: InputBorder.none,
-                          focusedBorder: InputBorder.none,
-                        ),
-                      ),
-                    ),Container(
-                      alignment: Alignment.center,
-                      margin: EdgeInsets.only(left: 20, right: 20, top: 20),
-                      padding: EdgeInsets.only(left: 20, right: 20),
-                      height: 54,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(50),
-                        color: Color(0xffEEEEEE),
-                        boxShadow: [
-                          BoxShadow(
-                              offset: Offset(0, 20),
-                              blurRadius: 100,
-                              color: Color(0xffEEEEEE)
-                          ),
-                        ],
-                      ),
-                      child: TextFormField(
-                        onChanged: (val){
-                          setState(() {
-                            Conpassword=val;
-                          });
-                        },
-                        controller: confirmPasswordController,
-                        obscureText: true,
-                        validator: (value){
-                          if(value!.isEmpty)
-                          {
-                            return ("Please inter your password");
-                          }
-                          if(confirmPasswordController.text != passwordController.text ){
-                            return "password do not match";
-                          }
-                          return null;
-                        },
-                        //onSaved: (value){
-                        // Conpassword=value!;
-                       // },
-                        cursorColor: Color(0xffF5591F),
-                        decoration: InputDecoration(
-                          focusColor: Color(0xffF5591F),
-                          icon: Icon(
-                            Icons.vpn_key,
-                            color: Color(0xffF5591F),
-                          ),
-                          hintText: "confirm Password",
-                          enabledBorder: InputBorder.none,
-                          focusedBorder: InputBorder.none,
-                        ),
-                      ),
-                    ),
-
-                    GestureDetector(
-                      onTap: () {
-                        // Write Click Listener Code Here.
-                      },
-                      child: MaterialButton(
-                        child: Container(
                           alignment: Alignment.center,
                           margin: EdgeInsets.only(left: 20, right: 20, top: 70),
                           padding: EdgeInsets.only(left: 20, right: 20),
                           height: 54,
                           decoration: BoxDecoration(
-                            gradient: LinearGradient(colors: [(new  Color(0xffF5591F)), new Color(0xffF2861E)],
-                                begin: Alignment.centerLeft,
-                                end: Alignment.centerRight
-                            ),
                             borderRadius: BorderRadius.circular(50),
                             color: Colors.grey[200],
                             boxShadow: [
@@ -372,36 +118,290 @@ class InitState extends State<SignUpScreen> {
                               ),
                             ],
                           ),
-                          child: Text(
-                            "REGISTER",
-                            style: TextStyle(
-                                color: Colors.white
+                          child: TextFormField(
+                            controller: nameController,
+                            keyboardType: TextInputType.name,
+                            onChanged: (val){
+                              setState(() {
+                                name=val;
+                              });
+                            },
+                            validator:(value){
+                              RegExp regex=new RegExp(r'^.{3,}$');
+                              if(value!.isEmpty)
+                              {
+                                return ("Please inter your name");
+                              }
+                              if((regex.hasMatch(value))==false){
+                                return ("Please inter name more than 3 character");
+                              }
+                              return null;
+                            },
+                            //onSaved: (value){
+                            // nameController.text=value!;
+                            //  },
+                            cursorColor: Color(0xffF5591F),
+                            decoration: InputDecoration(
+                              icon: Icon(
+                                Icons.person,
+                                color: Color(0xffF5591F),
+                              ),
+                              hintText: "Full Name",
+                              enabledBorder: InputBorder.none,
+                              focusedBorder: InputBorder.none,
                             ),
                           ),
                         ),
-                        onPressed: () async{
-
-                        // try{
-                         //  final user=await _auth.createUserWithEmailAndPassword(email: emailController.text, password: passwordController.text);
-                         //  }catch(e){
-                         //  print(e);
-                          //  }
-                           if (_formKey.currentState!.validate()) {
-                            // If the form is valid, display a snackbar. In the real world,
-                            // you'd often call a server or save the information in a database.
-                            //print(passwordController.text);
-
-                            signUp(email, password);
-                          }}
-
-    ),
-                      ),
 
 
-                  ],
+                        Container(
+                          alignment: Alignment.center,
+                          margin: EdgeInsets.only(left: 20, right: 20, top: 20),
+                          padding: EdgeInsets.only(left: 20, right: 20),
+                          height: 54,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(50),
+                            color: Colors.grey[200],
+                            boxShadow: [
+                              BoxShadow(
+                                  offset: Offset(0, 10),
+                                  blurRadius: 50,
+                                  color: Color(0xffEEEEEE)
+                              ),
+                            ],
+                          ),
+                          child: TextFormField(
+                            onChanged: (val){
+                              setState(() {
+                                email=val;
+                              });
+                            },
+                            controller: emailController,
+                            keyboardType: TextInputType.emailAddress,
+                            validator:(value){
+                              if(value!.isEmpty)
+                              {
+                                return ("Please inter your Email");
+                              }
+                              if(!RegExp(r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+").hasMatch(value)){
+                                return ("Please inter valid Email");
+                              }
+                              return null;
+                            },
+                            //onSaved: (value){
+                            //  emailController.text=value!;
+                            //},
+                            cursorColor: Color(0xffF5591F),
+                            decoration: InputDecoration(
+                              icon: Icon(
+                                Icons.email,
+                                color: Color(0xffF5591F),
+                              ),
+                              hintText: "Email",
+                              enabledBorder: InputBorder.none,
+                              focusedBorder: InputBorder.none,
+                            ),
+                          ),
+                        ),
+
+                        Container(
+                          alignment: Alignment.center,
+                          margin: EdgeInsets.only(left: 20, right: 20, top: 20),
+                          padding: EdgeInsets.only(left: 20, right: 20),
+                          height: 54,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(50),
+                            color: Color(0xffEEEEEE),
+                            boxShadow: [
+                              BoxShadow(
+                                  offset: Offset(0, 20),
+                                  blurRadius: 100,
+                                  color: Color(0xffEEEEEE)
+                              ),
+                            ],
+                          ),
+                          child: TextFormField(
+                            onChanged: (val){
+                              setState(() {
+                                phone=val;
+                              });
+                            },
+                            controller: phoneController,
+                            keyboardType: TextInputType.phone,
+                            validator: (value){
+                              if(value!.isEmpty)
+                              {
+                                return ("Please inter your phone");
+                              }
+
+                            },
+                            cursorColor: Color(0xffF5591F),
+                            decoration: InputDecoration(
+                              focusColor: Color(0xffF5591F),
+                              icon: Icon(
+                                Icons.phone,
+                                color: Color(0xffF5591F),
+                              ),
+                              hintText: "Phone Number",
+                              enabledBorder: InputBorder.none,
+                              focusedBorder: InputBorder.none,
+                            ),
+                          ),
+                        ),
+                        Container(
+                          alignment: Alignment.center,
+                          margin: EdgeInsets.only(left: 20, right: 20, top: 20),
+                          padding: EdgeInsets.only(left: 20, right: 20),
+                          height: 54,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(50),
+                            color: Color(0xffEEEEEE),
+                            boxShadow: [
+                              BoxShadow(
+                                  offset: Offset(0, 20),
+                                  blurRadius: 100,
+                                  color: Color(0xffEEEEEE)
+                              ),
+                            ],
+                          ),
+                          child: TextFormField(
+                            onChanged: (val){
+                              setState(() {
+                                password=val;
+                              });
+                            },
+                            controller: passwordController,
+                            obscureText: true,
+                            validator:(value){
+                              RegExp regex=new RegExp(r'^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[!@#\$&*~]).{8,}$');
+                              if(value!.isEmpty)
+                              {
+                                return ("Please inter your Password");
+                              }
+                              if(!regex.hasMatch(value)){
+                                return ("Please inter valid Password at least one \n (upper case,lower case,digit,Special character)\n and at least 8 characters in length");
+                              }
+                              return null;
+                            },
+                            //onSaved: (value){
+                            //  passwordController.text=value!;
+                            // },
+                            cursorColor: Color(0xffF5591F),
+                            decoration: InputDecoration(
+                              focusColor: Color(0xffF5591F),
+                              icon: Icon(
+                                Icons.vpn_key,
+                                color: Color(0xffF5591F),
+                              ),
+                              hintText: "Enter Password",
+                              enabledBorder: InputBorder.none,
+                              focusedBorder: InputBorder.none,
+                            ),
+                          ),
+                        ),Container(
+                          alignment: Alignment.center,
+                          margin: EdgeInsets.only(left: 20, right: 20, top: 20),
+                          padding: EdgeInsets.only(left: 20, right: 20),
+                          height: 54,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(50),
+                            color: Color(0xffEEEEEE),
+                            boxShadow: [
+                              BoxShadow(
+                                  offset: Offset(0, 20),
+                                  blurRadius: 100,
+                                  color: Color(0xffEEEEEE)
+                              ),
+                            ],
+                          ),
+                          child: TextFormField(
+                            onChanged: (val){
+                              setState(() {
+                                Conpassword=val;
+                              });
+                            },
+                            controller: confirmPasswordController,
+                            obscureText: true,
+                            validator: (value){
+                              if(value!.isEmpty)
+                              {
+                                return ("Please inter your password");
+                              }
+                              if(Conpassword != password ){
+                                return "password do not match";
+                              }
+                              return null;
+                            },
+                            //onSaved: (value){
+                            // Conpassword=value!;
+                            // },
+                            cursorColor: Color(0xffF5591F),
+                            decoration: InputDecoration(
+                              focusColor: Color(0xffF5591F),
+                              icon: Icon(
+                                Icons.vpn_key,
+                                color: Color(0xffF5591F),
+                              ),
+                              hintText: "confirm Password",
+                              enabledBorder: InputBorder.none,
+                              focusedBorder: InputBorder.none,
+                            ),
+                          ),
+                        ),
+
+                        GestureDetector(
+                          onTap: () {
+                            // Write Click Listener Code Here.
+                          },
+                          child: MaterialButton(
+                              child: Container(
+                                alignment: Alignment.center,
+                                margin: EdgeInsets.only(left: 20, right: 20, top: 70),
+                                padding: EdgeInsets.only(left: 20, right: 20),
+                                height: 54,
+                                decoration: BoxDecoration(
+                                  gradient: LinearGradient(colors: [(new  Color(0xffF5591F)), new Color(0xffF2861E)],
+                                      begin: Alignment.centerLeft,
+                                      end: Alignment.centerRight
+                                  ),
+                                  borderRadius: BorderRadius.circular(50),
+                                  color: Colors.grey[200],
+                                  boxShadow: [
+                                    BoxShadow(
+                                        offset: Offset(0, 10),
+                                        blurRadius: 50,
+                                        color: Color(0xffEEEEEE)
+                                    ),
+                                  ],
+                                ),
+                                child: Text(
+                                  "REGISTER",
+                                  style: TextStyle(
+                                      color: Colors.white
+                                  ),
+                                ),
+                              ),
+                              onPressed: () async{
+
+                                // try{
+                                //  final user=await _auth.createUserWithEmailAndPassword(email: emailController.text, password: passwordController.text);
+                                //  }catch(e){
+                                //  print(e);
+                                //  }
+                                if (_formKey.currentState!.validate()) {
+                                  // If the form is valid, display a snackbar. In the real world,
+                                  // you'd often call a server or save the information in a database.
+                                  //print(passwordController.text);
+
+                                  signUp(email, password);
+                                }}
+
+                          ),
+                        ),
+                      ],)
                 ),
-              ),
-            )
+              ]),),),
+
 
     );
   }

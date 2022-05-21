@@ -4,15 +4,15 @@ class UserModel {
   String? email;
   String? password;
   String? phone;
-  String? club;
-  UserModel({this.uid,this.name,this.email,this.password,this.phone,this.club});
+  List<String>? club;
+  UserModel({this.uid,this.name,this.email,this.club,this.phone});
   factory UserModel.fromMap(map){
     return UserModel(
       uid: map['uid'],
       email: map['email'],
       name: map['name'],
       phone: map['phone'],
-      club: map['club'],
+      club: List.from(map['club']),
     );
   }
   //send data
