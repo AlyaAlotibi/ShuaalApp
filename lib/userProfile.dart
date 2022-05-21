@@ -3,6 +3,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:shuaalapp/DatabaseManager/databaseManager.dart';
+import 'package:shuaalapp/model/club_model.dart';
 import 'package:shuaalapp/model/user_model.dart';
 
 
